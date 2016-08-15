@@ -96,7 +96,7 @@ public class App extends ResourceConfig {
         conf.setVersion("v1");
         conf.setResourcePackage("br.net.twome.kd.resources");
         conf.setPrettyPrint(true);
-        conf.setBasePath("/KdTodoMundo/api");
+        conf.setBasePath("/kdtodomundo/api");
         conf.setScan(true);
 	}
 	

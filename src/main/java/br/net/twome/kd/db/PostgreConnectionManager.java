@@ -17,7 +17,7 @@ public class PostgreConnectionManager extends ConnectionManager {
 		//Your configurations here...
 		config.setUsername("postgres");
 		config.setPassword("postgres");
-		config.addDataSourceProperty("databaseName", "restapp");
+		config.addDataSourceProperty("databaseName", "kdtodomundo");
 		config.addDataSourceProperty("portNumber", 5432);
 		
 		return new HikariDataSource(config);

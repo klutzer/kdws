@@ -14,23 +14,12 @@ import br.net.twome.kd.db.types.BetweenJoda;
 public class UsuarioDAO extends AbstractDAO {
 
 	public Usuario login(Usuario usuario) {
-		if (usuario.getSenha() == null || usuario.getSenha().isEmpty()) {
-			throw new BeanException("Nenhuma senha informada!");
-		}
-		Usuario bd = session.createBasicInstance(usuario);
-		if (!session.load(bd)) {
-			session.insert(usuario);
-			return usuario;
-		}
-		if (usuario.getSenha().equals(bd.getSenha())) {
-			return bd;
-		}else {
-			throw new BeanException("Senha não confere!");			
-		}
+		validaUsuario(usuario, true);
+		return usuario;
 	}
 	
 	public List<Usuario> updateLocalizacao(Usuario usuario) {
-		validaUsuario(usuario);
+		validaUsuario(usuario, false);
 		usuario.setDataUltimaAtualizacao(new DateTime());
 		session.update(usuario);
 		
@@ -53,12 +42,19 @@ public class UsuarioDAO extends AbstractDAO {
 		return list;
 	}
 	
-	private void validaUsuario(Usuario usuario) {
+	private void validaUsuario(Usuario usuario, boolean insertIfNoExists) {
 		if (usuario.getSenha() == null || usuario.getSenha().isEmpty()) {
 			throw new BeanException("Nenhuma senha informada!");
 		}
 		Usuario bd = session.createBasicInstance(usuario);
-		session.load(bd);
+		if (!session.load(bd)) {
+			if (insertIfNoExists) {
+				session.insert(usuario);
+				return;
+			}else {
+				throw new BeanException("Usuário não encontrado!");
+			}
+		}
 		if (!usuario.getSenha().equals(bd.getSenha())) {
 			throw new BeanException("Senha não confere!");			
 		}
