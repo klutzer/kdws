@@ -1,4 +1,4 @@
-package com.example.restapp;
+package br.net.twome.kd;
 
 import javax.ws.rs.ext.ContextResolver;
 import javax.ws.rs.ext.Provider;

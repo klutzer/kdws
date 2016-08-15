@@ -1,4 +1,4 @@
-package com.example.restapp;
+package br.net.twome.kd;
 
 import java.sql.Connection;
 
@@ -14,13 +14,12 @@ import org.mentacontainer.Scope;
 import org.mentacontainer.impl.MentaContainer;
 import org.mentacontainer.impl.SingletonFactory;
 
-import com.example.restapp.business.DummyBean;
-import com.example.restapp.dao.DummyBeanDAO;
-import com.example.restapp.db.ConnectionFactory;
-import com.example.restapp.db.ConnectionManager;
-import com.example.restapp.db.PostgreConnectionManager;
-import com.example.restapp.db.types.DBTypes;
-
+import br.net.twome.kd.business.Usuario;
+import br.net.twome.kd.dao.UsuarioDAO;
+import br.net.twome.kd.db.ConnectionFactory;
+import br.net.twome.kd.db.ConnectionManager;
+import br.net.twome.kd.db.PostgreConnectionManager;
+import br.net.twome.kd.db.types.DBTypes;
 import io.swagger.jaxrs.listing.ApiListingResource;
 import io.swagger.jaxrs.listing.SwaggerSerializers;
 
@@ -68,7 +67,7 @@ public class App extends ResourceConfig {
 		container.autowire(BeanSession.class);
 
 		//Here add your own IoC settings...
-		container.ioc(DummyBeanDAO.class, DummyBeanDAO.class);
+		container.ioc(UsuarioDAO.class, UsuarioDAO.class);
 		//...
 	}
 	
@@ -76,11 +75,13 @@ public class App extends ResourceConfig {
 		
 		//Here add the mapping for your beans
 		
-		DummyBean bean = PropertiesProxy.create(DummyBean.class);
-		BeanConfig config = new BeanConfig(DummyBean.class, "dummies")
-				.pk(bean.getId(), DBTypes.AUTOINCREMENT)
-				.field(bean.getName(), DBTypes.STRING)
-				.field(bean.getDate(), DBTypes.JODA_DATETIME);
+		Usuario bean = PropertiesProxy.create(Usuario.class);
+		BeanConfig config = new BeanConfig(Usuario.class, "usuarios")
+				.pk(bean.getNickname(), DBTypes.STRING)
+				.field(bean.getSenha(), DBTypes.STRING)
+				.field(bean.getLatitude(), DBTypes.DOUBLE)
+				.field(bean.getLongitude(), DBTypes.DOUBLE)
+				.field(bean.getDataUltimaAtualizacao(), DBTypes.JODA_DATETIME);
 		
 		beanManager.addBeanConfig(config);
 	}
@@ -90,12 +91,12 @@ public class App extends ResourceConfig {
 		registerClasses(SwaggerSerializers.class, ApiListingResource.class);
 		
 		io.swagger.jaxrs.config.BeanConfig conf = new io.swagger.jaxrs.config.BeanConfig();
-		conf.setTitle("RestApp API");
-		conf.setDescription("Live docs for RestApp API");
+		conf.setTitle("KdTodoMundo API");
+		conf.setDescription("Documentação da API KdTodoMundo");
         conf.setVersion("v1");
-        conf.setResourcePackage("com.example.restapp.resources");
+        conf.setResourcePackage("br.net.twome.kd.resources");
         conf.setPrettyPrint(true);
-        conf.setBasePath("/RestApp/api");
+        conf.setBasePath("/KdTodoMundo/api");
         conf.setScan(true);
 	}
 	

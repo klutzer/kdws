@@ -1,4 +1,4 @@
-package com.example.restapp.db;
+package br.net.twome.kd.db;
 
 import java.sql.Connection;
 import java.sql.Driver;

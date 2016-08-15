@@ -1,4 +1,4 @@
-package com.example.restapp;
+package br.net.twome.kd;
 
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.DeserializationFeature;

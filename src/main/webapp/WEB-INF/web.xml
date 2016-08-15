@@ -4,7 +4,7 @@
 	version="3.0">
 	<security-constraint>
 		<web-resource-collection>
-			<web-resource-name>restapp</web-resource-name>
+			<web-resource-name>kdtodomundo</web-resource-name>
 			<url-pattern>/*</url-pattern>
 		</web-resource-collection>
 		<user-data-constraint>

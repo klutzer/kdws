@@ -1,4 +1,4 @@
-package com.example.restapp.dao;
+package br.net.twome.kd.dao;
 
 import org.mentabean.BeanSession;
 

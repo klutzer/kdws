@@ -1,4 +1,4 @@
-package com.example.restapp.db.types;
+package br.net.twome.kd.db.types;
 
 public class DBTypes extends org.mentabean.DBTypes {
 	

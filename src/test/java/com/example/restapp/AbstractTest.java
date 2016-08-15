@@ -15,7 +15,10 @@ import org.glassfish.jersey.test.spi.TestContainerFactory;
 import org.mentabean.BeanSession;
 import org.mentabean.util.SQLUtils;
 
-import com.example.restapp.db.H2ConnectionManager;
+import br.net.twome.kd.App;
+import br.net.twome.kd.ContextListener;
+import br.net.twome.kd.JsonProvider;
+import br.net.twome.kd.db.H2ConnectionManager;
 
 @SuppressWarnings("deprecation")
 public class AbstractTest extends JerseyTest {

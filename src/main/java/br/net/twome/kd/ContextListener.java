@@ -1,4 +1,4 @@
-package com.example.restapp;
+package br.net.twome.kd;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;

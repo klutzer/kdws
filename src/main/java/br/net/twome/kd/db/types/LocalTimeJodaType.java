@@ -1,4 +1,4 @@
-package com.example.restapp.db.types;
+package br.net.twome.kd.db.types;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

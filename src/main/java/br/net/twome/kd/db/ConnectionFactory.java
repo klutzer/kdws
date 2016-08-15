@@ -1,11 +1,11 @@
-package com.example.restapp.db;
+package br.net.twome.kd.db;
 
 import java.sql.Connection;
 
 import org.mentacontainer.Factory;
 import org.mentacontainer.Interceptor;
 
-import com.example.restapp.App;
+import br.net.twome.kd.App;
 
 public class ConnectionFactory implements Factory, Interceptor<Connection> {
 
