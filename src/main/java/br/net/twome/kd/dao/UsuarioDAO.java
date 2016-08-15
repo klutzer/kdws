@@ -26,6 +26,7 @@ public class UsuarioDAO extends AbstractDAO {
 		QueryBuilder builder = session.buildQuery();
 		Alias<Usuario> aliasUsu = builder.aliasTo(Usuario.class, "usu");
 		Usuario usu = aliasUsu.pxy();
+		aliasUsu.setReturnMinus(usu.getSenha(), usu.getDataUltimaAtualizacao());
 		DateTime time = new DateTime().minusHours(8);
 		
 		List<Usuario> list = builder.selectFrom(aliasUsu)

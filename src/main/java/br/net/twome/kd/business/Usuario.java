@@ -2,10 +2,13 @@ package br.net.twome.kd.business;
 
 import org.joda.time.DateTime;
 
+import io.swagger.annotations.ApiModelProperty;
+
 public class Usuario {
 	
 	private String nickname;
 	private String senha;
+	@ApiModelProperty(hidden = true)
 	private DateTime dataUltimaAtualizacao;
 	private Double latitude;
 	private Double longitude;
